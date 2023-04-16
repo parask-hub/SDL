@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacii</title>
+</head>
+
+<body>
+    <label> Enter The Number Of Elements of Series : </label>
+    <input type="number" class="ip"><span><button onclick="show()">Show Results</button></span>
+    <div class=" res">
+
+    </div>
+
+    <script>
+        function show() {
+
+            let i = 0;
+            let j = 1;
+            let string = "0 1"
+            let n = document.querySelector('.ip').value;
+
+            for (var k = 0; k < n - 2; k++) {
+                var temp = i + j;
+                string = string + " " + temp;
+                i = j;
+                j = temp;
+
+
+            }
+
+            const res = document.querySelector('.res');
+            res.innerHTML = string;
+        }
+    </script>
+</body>
+
+</html>

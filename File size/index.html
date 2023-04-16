@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file size</title>
+</head>
+
+<body>
+    <h3>Put Your File To Know its size : </h3>
+    <label for="">FILE : </label><input class="fileip" type="file" onchange="calc_size()">
+    <b>
+        <h2 class="res"></h2>
+    </b>
+
+    <script>
+        function calc_size() {
+            const file = document.querySelector('.fileip');
+            var s = file.files[0].size;
+            var i = 0;
+            var units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+            while (i <= units.length - 1 && s >= 1024) {
+                s = s / 1024;
+                i++;
+            }
+            const res = s + " " + units[i];
+            const r = document.querySelector('.res');
+            r.innerHTML = "Size Of The File is : " + res;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

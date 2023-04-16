@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        .errormsg {
+            color: red;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="pk.html" onsubmit="return Validateform()" name="myform">
+            <div>
+                <label>Name : </label><input type="text" name="name"><span class="errormsg"></span>
+            </div>
+            <div>
+                <label>Email : </label><input type="text" name="email"><span class="errormsg"></span>
+            </div>
+            <div>
+                <label>Phone Number : </label><input type="number" name="phone"><span class="errormsg"></span>
+            </div>
+            <div>
+                <label>Password : </label><input type="password" name="password"><span class="errormsg"></span>
+            </div>
+            <div>
+                <label>Confirm Password : </label><input type="password" name="conpass"><span class="errormsg"></span>
+            </div>
+            <div>
+                <button type="submit">Submit </button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        function show_err(n, msg) {
+            const msg_box = document.getElementsByClassName("errormsg");
+            msg_box[n].innerHTML = msg;
+
+        }
+
+        function clearerrmsg() {
+            const msg = document.getElementsByClassName("errormsg");
+            for (items of msg) {
+                items.innerHTML = "";
+            }
+        }
+
+        function Validateform() {
+            const name = document.forms["myform"]["name"].value;
+            const email = document.forms["myform"]["email"].value;
+            const phone = document.forms["myform"]["phone"].value;
+            const pass = document.forms["myform"]["password"].value;
+            const conpass = document.forms["myform"]["conpass"].value;
+            console.log(pass);
+
+            clearerrmsg();
+            // console.log(name);
+            if (name === "") {
+                show_err(0, "Please Enter Something");
+                return false;
+            }
+            if (name.length < 5) {
+                show_err(0, "Please Enter the Name greater that 5 charecters");
+                return false;
+            }
+            if (email == "") {
+                show_err(1, "Enter Email Please !");
+                return false;
+            }
+            if (!email.includes('@')) {
+                show_err(1, "Enter valid Email Please !");
+                return false;
+            }
+            if (phone < 999999999) {
+                show_err(2, "Enter 10 digit Moblile Number Please !");
+                return false;
+
+            }
+            if (pass != conpass) {
+                show_err(3, "Renenter The password");
+                return false;
+
+            }
+            console.log(submitted)
+
+            const page = document.getElementsByClassName("container").innerHTML = "<h1> Form submitted successfully</h1>"
+
+
+
+
+            return true;
+
+        }
+    </script>
+</body>
+
+</html>

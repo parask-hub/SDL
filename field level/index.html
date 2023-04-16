@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="name-error" class="error-message"></div>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-error" class="error-message"></div>
+        </div>
+
+        <div>
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <div id="confirm-password-error" class="error-message"></div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<script>
+    const form = document.querySelector('form');
+    const nameInput = document.querySelector('#name');
+    const passwordInput = document.querySelector('#password');
+    const confirmPasswordInput = document.querySelector('#confirm-password');
+
+    form.addEventListener('submit', function (event) {
+        let valid = true;
+
+        if (nameInput.value.trim() === '') {
+            valid = false;
+            nameInput.classList.add('invalid');
+            document.querySelector('#name-error').textContent = 'Name is required';
+        } else {
+            nameInput.classList.remove('invalid');
+            document.querySelector('#name-error').textContent = '';
+        }
+
+        if (passwordInput.value.trim() === '') {
+            valid = false;
+            passwordInput.classList.add('invalid');
+            document.querySelector('#password-error').textContent = 'Password is required';
+        } else {
+            passwordInput.classList.remove('invalid');
+            document.querySelector('#password-error').textContent = '';
+        }
+
+        if (confirmPasswordInput.value.trim() === '') {
+            valid = false;
+            confirmPasswordInput.classList.add('invalid');
+            document.querySelector('#confirm-password-error').textContent = 'Confirm password is required';
+        } else if (confirmPasswordInput.value.trim() !== passwordInput.value.trim()) {
+            valid = false;
+            confirmPasswordInput.classList.add('invalid');
+            document.querySelector('#confirm-password-error').textContent = 'Passwords do not match';
+        } else {
+            confirmPasswordInput.classList.remove('invalid');
+            document.querySelector('#confirm-password-error').textContent = '';
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+
+</script>
+</body>
+
+</html>

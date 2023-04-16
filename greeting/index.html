@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greet</title>
+</head>
+
+<body>
+    <div>
+        <div> Current Time is : </div>
+        <span class="container"></span>
+        <div>
+            <button onclick="showtime()">Show Time</button>
+        </div>
+
+    </div>
+    <script>
+
+
+        function showtime() {
+            console.log("clicked");
+            const tim = new Date().getHours();
+            console.log(tim);
+
+            console.log(tim);
+            const con = document.querySelector('.container');
+            if (tim < 4 && tim < 12) {
+                con.innerHTML = 'Good Morning !';
+            }
+            else if (tim > 12 && tim < 18) {
+                con.innerHTML = 'Good AfterNoon !';
+            }
+            else {
+                con.innerHTML = 'Good Eveining !'
+            }
+        }
+
+    </script>
+</body>
+
+
+</html>
